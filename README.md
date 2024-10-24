@@ -1,14 +1,20 @@
 import pandas as pd
 data = pd.read_csv('/Users/kankantingting/Documents/messy_population_data.csv') 
 print(data.head(data))
+
 print(data.info(data))
+
 print(data.describe(data))
+
 print(data.isnull().sum(data))
+
 print(data.duplicated().sum(data))
+
 print(data['Country'].value_counts(data)) 
 
 #Missing Data:
-1)
+
+1) 
 
 income_groups: 6,306 missing entries (around 5%).
 age: 6,223 missing entries.
