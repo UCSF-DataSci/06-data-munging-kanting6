@@ -7,7 +7,7 @@
 - Rows: 125,718
 - Columns: 5 (income_groups, age, gender, year, population)
 
-**Missing Data**:
+## Identified Issues
    - `income_groups`: 6,306 missing entries (around 5%).
    - `age`: 6,223 missing entries.
    - `gender`: 5,907 missing entries.
