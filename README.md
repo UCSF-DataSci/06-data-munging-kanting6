@@ -2,7 +2,7 @@
 
 ## 1. Initial State Analysis
 
-1. Dataset Overview
+## Dataset Overview
 - Name: messy_population_data.csv
 - Rows: 125,718
 - Columns: 5 (income_groups, age, gender, year, population)
