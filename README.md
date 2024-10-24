@@ -3,9 +3,9 @@
 ## 1. Initial State Analysis
 
 1. Dataset Overview
-Name: messy_population_data.csv
-Rows: 125,718
-Columns: 5 (income_groups, age, gender, year, population)
+- Name: messy_population_data.csv
+- Rows: 125,718
+- Columns: 5 (income_groups, age, gender, year, population)
 
 **Missing Data**:
    - `income_groups`: 6,306 missing entries (around 5%).
