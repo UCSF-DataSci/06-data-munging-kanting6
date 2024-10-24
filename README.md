@@ -183,7 +183,7 @@ This data-cleaning process reinforced the importance of:
 
 ### Potential Next Steps or Further Improvements
 
-In the future, I plan to implement automated checks for data integrity to ensure ongoing data quality in analyses and maintain proper logs of all data quality enhancements.
+In the future, I plan to implement automated checks for data integrity to ensure ongoing data quality in analyses and keep all proper logs as records for data quality enhancements.
 
 
 
