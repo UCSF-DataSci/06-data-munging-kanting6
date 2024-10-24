@@ -68,6 +68,15 @@ The cleaned dataset, `cleaned_population_data.csv`, has been refined to enhance 
 - Rows: 122,768
 - Columns: 5 (income_groups, age, gender, year, population)
 
+| Column Name    | Data Type | Non-Null Count | # Unique Values | Mean            |
+|----------------|-----------|----------------|-----------------|-----------------|
+| income_groups  | object    | 122,768         | 9               | N/A             |
+| age            | float64   | 122,768         | 101             | 49.997361       |
+| gender         | object    | 5,759           | 1               | N/A             |
+| year           | int64     | 122,768         | 169             | 2027.297455     |
+| population     | float64   | 122,768         | 114,925         | 108,377,654.31  |
+
+
 ## Summary of Changes:
 
 - **Missing Values**:
