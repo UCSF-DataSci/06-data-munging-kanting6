@@ -65,9 +65,6 @@ The dataset contains population data with issues such as missing values, duplica
 
 The cleaned dataset has improved data quality, with missing values addressed, duplicates removed, correct data types, and outliers handled. 
 
-![image](https://github.com/user-attachments/assets/9d9a104d-4f74-4ae8-9d9d-309f474119ec)
-
-
 
 
 
