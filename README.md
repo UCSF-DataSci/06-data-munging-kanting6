@@ -2,20 +2,25 @@
 
 ## 1. Initial State Analysis
 
-1. **Missing Data**:
+1. Dataset Overview
+Name: messy_population_data.csv
+Rows: 125,718
+Columns: 5 (income_groups, age, gender, year, population)
+
+**Missing Data**:
    - `income_groups`: 6,306 missing entries (around 5%).
    - `age`: 6,223 missing entries.
    - `gender`: 5,907 missing entries.
    - `year`: 6,202 missing entries.
    - `population`: 6,340 missing entries.
 
-2. **Data Types**:
+4. **Data Types**:
    - Most columns (`age`, `gender`, `year`, `population`) are stored as `float64`, which may be unnecessary for categorical data like `gender` and `year`.
 
-3. **Gender Representation**:
+5. **Gender Representation**:
    - The `gender` column uses numeric values (e.g., 1.0, 3.0). The value `3.0` seems irregular for a binary gender representation.
 
-4. **Age**:
+6. **Age**:
    - There are records where `age` is 0, which could represent newborns or invalid data.
 
 
