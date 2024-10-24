@@ -14,13 +14,13 @@
    - `year`: 6,202 missing entries.
    - `population`: 6,340 missing entries.
 
-4. **Data Types**:
+**Data Types**:
    - Most columns (`age`, `gender`, `year`, `population`) are stored as `float64`, which may be unnecessary for categorical data like `gender` and `year`.
 
-5. **Gender Representation**:
+**Gender Representation**:
    - The `gender` column uses numeric values (e.g., 1.0, 3.0). The value `3.0` seems irregular for a binary gender representation.
 
-6. **Age**:
+**Age**:
    - There are records where `age` is 0, which could represent newborns or invalid data.
 
 
