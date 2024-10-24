@@ -1,67 +1,89 @@
 import pandas as pd
 import numpy as np
 import logging
+import os
 
-# Set up logging
-logging.basicConfig(filename='clean_data.log', level=logging.INFO,
-                    format='%(asctime)s - %(levelname)s - %(message)s')
+# Setup logging
+logging.basicConfig(
+    filename='clean_data.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s',
+)
 
-def clean_data(input_file, output_file):
+def load_data(file_path):
+    """Load data from a CSV file."""
     try:
-        # Load the data
-        logging.info(f"Loading data from {input_file}")
-        data = pd.read_csv(input_file)
-        logging.info(f"Data loaded successfully. Shape: {data.shape}")
-
-        # Step 1: Handle missing values
-        # Identify columns with missing values
-        missing_values = data.isnull().sum()
-        logging.info(f"Missing values before cleaning: \n{missing_values}")
-        
-        # Drop rows where more than 50% of the columns are missing
-        data = data.dropna(thresh=len(data.columns) * 0.5)
-        logging.info(f"Rows with more than 50% missing values dropped. New shape: {data.shape}")
-        
-        # For other columns, fill missing values with mean for numerical columns
-        num_columns = data.select_dtypes(include=[np.number]).columns
-        data[num_columns] = data[num_columns].fillna(data[num_columns].mean())
-        logging.info(f"Filled missing values in numerical columns with column mean")
-
-        # Step 2: Remove duplicates
-        duplicates = data.duplicated().sum()
-        logging.info(f"Number of duplicate rows: {duplicates}")
-        data = data.drop_duplicates()
-        logging.info(f"Duplicates removed. New shape: {data.shape}")
-
-        # Step 3: Correct data types
-        # Ensure population column is numeric
-        if 'population' in data.columns:
-            data['population'] = pd.to_numeric(data['population'], errors='coerce')
-            logging.info(f"Population column converted to numeric.")
-
-        # Step 4: Handle outliers
-        # For numeric columns, remove rows with values greater than 3 standard deviations from the mean
-        for col in num_columns:
-            mean = data[col].mean()
-            std = data[col].std()
-            outliers = data[(data[col] < (mean - 3 * std)) | (data[col] > (mean + 3 * std))].shape[0]
-            data = data[(data[col] >= (mean - 3 * std)) & (data[col] <= (mean + 3 * std))]
-            logging.info(f"Removed {outliers} outliers from column {col}")
-
-        # Step 5: Normalize or standardize data if necessary (optional step)
-        # Example: Standardize the population column
-        if 'population' in data.columns:
-            data['population'] = (data['population'] - data['population'].mean()) / data['population'].std()
-            logging.info(f"Standardized the population column")
-
-        # Save the cleaned data
-        data.to_csv(output_file, index=False)
-        logging.info(f"Cleaned data saved to {output_file}")
-
+        data = pd.read_csv(file_path)
+        logging.info(f"Data loaded successfully from {file_path}.")
+        return data
+    except FileNotFoundError as e:
+        logging.error(f"File not found: {file_path}. Exception: {e}")
+        raise
+    except pd.errors.EmptyDataError as e:
+        logging.error(f"No data found in file: {file_path}. Exception: {e}")
+        raise
     except Exception as e:
-        logging.error(f"Error during cleaning process: {e}")
+        logging.error(f"An error occurred while loading data from {file_path}: {e}")
+        raise
+
+def clean_data(df):
+    """Clean the loaded dataframe."""
+    # 1. Drop duplicate rows
+    df.drop_duplicates(inplace=True)
+    logging.info(f"Removed duplicate rows. New shape: {df.shape}")
+
+    # 2. Handle missing values (example: replace NaNs in 'age' with median)
+    if 'age' in df.columns:
+        median_age = df['age'].median()
+        df['age'].fillna(median_age, inplace=True)
+        logging.info(f"Filled missing values in 'age' with median: {median_age}")
+
+    # 3. Remove rows with missing values in critical columns 
+    df.dropna(subset=['income_groups', 'age'], inplace=True)
+    logging.info(f"Dropped rows with missing values in critical columns 'income_groups' or 'age'. New shape: {df.shape}")
+
+    # 4. Correct data types (e.g., ensure 'age' is an integer)
+    try:
+        df['age'] = pd.to_numeric(df['age'], errors='coerce').astype('Int64')
+        logging.info("Converted 'age' column to integer.")
+    except Exception as e:
+        logging.error(f"Error converting 'age' to integer: {e}")
+    
+    # 5. Strip whitespace from string columns
+    df_obj = df.select_dtypes(['object'])
+    df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
+    logging.info("Stripped whitespace from string columns.")
+
+    # 6. Remove rows with unrealistic age values (e.g., age < 0)
+    df = df[df['age'] >= 0]
+    logging.info(f"Removed rows with unrealistic age values. New shape: {df.shape}")
+
+    return df
+
+def save_cleaned_data(df, output_path):
+    """Save the cleaned dataframe to a CSV file."""
+    try:
+        df.to_csv(output_path, index=False)
+        logging.info(f"Cleaned data saved to {output_path}.")
+    except Exception as e:
+        logging.error(f"An error occurred while saving cleaned data to {output_path}: {e}")
+        raise
 
 if __name__ == "__main__":
-    input_file = 'messy_population_data.csv'
-    output_file = 'cleaned_population_data.csv'
-    clean_data(input_file, output_file)
+    # Define input and output file paths
+    input_file = os.path.expanduser("~/Documents/messy_population_data.csv")
+    output_file = os.path.expanduser("~/Documents/cleaned_population_data.csv")
+
+    # Load the data
+    try:
+        df = load_data(input_file)
+
+        # Clean the data
+        cleaned_df = clean_data(df)
+
+        # Save the cleaned data
+        save_cleaned_data(cleaned_df, output_file)
+        print("Data cleaning completed successfully!")
+    except Exception as e:
+        logging.critical(f"Data cleaning failed due to an error: {e}")
+        print(f"Data cleaning failed. Check the log file for details.")
