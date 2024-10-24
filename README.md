@@ -1,4 +1,4 @@
-# Exploratory Data Analysis (EDA) Issues Results:
+# Part A: Exploratory Data Analysis (EDA) Issues Results
 
 1. **Missing Data**:
    - `income_groups`: 6,306 missing entries (around 5%).
@@ -18,7 +18,7 @@
 
 
 
-# Data Cleaning Process
+# Part B: Data Cleaning Process
 
 ## Input Data: `messy_population_data.csv`
 The dataset contains population data with issues such as missing values, duplicates, inconsistent data types, and outliers. This script addresses these issues systematically.
