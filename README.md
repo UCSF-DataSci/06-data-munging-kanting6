@@ -63,8 +63,15 @@ The cleaned dataset has improved data quality, with missing values addressed, du
 
 The cleaned dataset, `cleaned_population_data.csv`, has been refined to enhance its quality for data analysis. Key features include:
 
+## Dataset Overview
+- Name: cleaned_population_data.csv
+- Rows: 122,768
+- Columns: 5 (income_groups, age, gender, year, population)
+
+## Summary of Changes:
+
 - **Missing Values**:
-  - Rows with missing values in various columns, such as `age`, have been removed, leading to improved data reliability.
+  - Rows with missing values in various columns, such as `age`, have been replaced with "Unknown", leading to improved data reliability.
   - For the remaining numerical columns, missing values were replaced with the mean of each respective column, ensuring minimal disruption to the data distribution.
 
 - **Duplicates**:
