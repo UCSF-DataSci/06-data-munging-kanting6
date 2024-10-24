@@ -7,6 +7,15 @@
 - Rows: 125,718
 - Columns: 5 (income_groups, age, gender, year, population)
 
+| Column Name    | Data Type | Non-Null Count | # Unique Values | Mean            |
+|----------------|-----------|----------------|-----------------|-----------------|
+| income_groups  | object    | 119412         | 8               | N/A             |
+| age            | float64   | 119495         | 101             | 50.01           |
+| gender         | float64   | 119811         | 3               | 1.58            |
+| year           | float64   | 119516         | 169             | 2025.07         |
+| population     | float64   | 119378         | 114925          | 111,298,282.75  |
+
+
 ## Identified Issues
    - `income_groups`: 6,306 missing entries (around 5%).
    - `age`: 6,223 missing entries.
