@@ -12,7 +12,7 @@ print(data.duplicated().sum(data))
 
 print(data['Country'].value_counts(data)) 
 
-#Missing Data:
+#Exploratory Data Analysis (EDA) Issues Results:
 
 1) 
 
