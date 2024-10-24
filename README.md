@@ -52,7 +52,34 @@ The dataset contains population data with issues such as missing values, duplica
 - year: Replaced missing values with the mode / most frequent year as it's likely to capture the most typical value.
 - population: Replaced missing values with the median, a robust statistic against outliers.
 
+#### Handle missing values
+    # For 'income_groups', replace missing values with 'Unknown'
+    if 'income_groups' in df.columns:
+        df['income_groups'].fillna('Unknown', inplace=True)
+        logging.info(f"Filled missing values in 'income_groups' with 'Unknown'.")
 
+    # For 'age', replace missing values with the median age
+    if 'age' in df.columns:
+        median_age = df['age'].median()
+        df['age'].fillna(median_age, inplace=True)
+        logging.info(f"Filled missing values in 'age' with median: {median_age}")
+
+    # For 'gender', replace missing values with 'Not Specified'
+    if 'gender' in df.columns:
+        df['gender'].fillna('Not Specified', inplace=True)
+        logging.info("Filled missing values in 'gender' with 'Not Specified'.")
+
+    # For 'year', replace missing values with the mode (most frequent year)
+    if 'year' in df.columns:
+        most_frequent_year = df['year'].mode()[0]
+        df['year'].fillna(most_frequent_year, inplace=True)
+        logging.info(f"Filled missing values in 'year' with mode: {most_frequent_year}")
+
+    # For 'population', replace missing values with the median population
+    if 'population' in df.columns:
+        median_population = df['population'].median()
+        df['population'].fillna(median_population, inplace=True)
+        logging.info(f"Filled missing values in 'population' with median: {median_population}")
 
 ### Correcting Data Types:
 - Ensured the 'year' column as an integer type to maintain consistency and trimmed Whitespace.
