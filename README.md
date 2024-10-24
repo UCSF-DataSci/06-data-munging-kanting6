@@ -7,6 +7,8 @@
 - Rows: 125,718
 - Columns: 5 (income_groups, age, gender, year, population)
 
+## Column Details
+
 | Column Name    | Data Type | Non-Null Count | # Unique Values | Mean            |
 |----------------|-----------|----------------|-----------------|-----------------|
 | income_groups  | object    | 119412         | 8               | N/A             |
@@ -74,6 +76,8 @@ The cleaned dataset, `cleaned_population_data.csv`, has been refined to enhance 
 - Name: cleaned_population_data.csv
 - Rows: 122,768
 - Columns: 5 (income_groups, age, gender, year, population)
+
+## Column Details
 
 | Column Name    | Data Type | Non-Null Count | # Unique Values | Mean            |
 |----------------|-----------|----------------|-----------------|-----------------|
