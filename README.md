@@ -32,7 +32,7 @@ The dataset contains population data with issues such as missing values, duplica
 
 ### Cleaning Process:
 
-## Filling Missing Values:
+### Filling Missing Values:
 
 - income_groups: Replaced missing values with 'Unknown'. This categorical placeholder avoids introducing bias.
 - age: Replaced missing values with the median age to avoid outlier effects.
@@ -40,14 +40,14 @@ The dataset contains population data with issues such as missing values, duplica
 - year: Replaced missing values with the mode (most frequent year) as it's likely to capture the most typical value.
 - population: Replaced missing values with the median, a robust statistic against outliers.
 
-##Correcting Data Types:
+### Correcting Data Types:
 - Ensured the 'year' column is an integer type to maintain consistency.
 Trimming Whitespace:
 
-## Removed leading and trailing whitespace from all string columns.
+### Removed leading and trailing whitespace from all string columns.
 - Removing Unrealistic Values:
 
-## Dropped rows with negative population values.
+### Dropped rows with negative population values.
 
 ### Error Handling and Logging:
 - The script includes error handling to log any issues encountered during the cleaning process. A log file (`clean_data.log`) is generated for tracking purposes.
