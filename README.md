@@ -17,6 +17,8 @@
 
 
 ## Identified Issues
+
+**Missing Entries**:
    - `income_groups`: 6,306 missing entries (around 5%).
    - `age`: 6,223 missing entries.
    - `gender`: 5,907 missing entries.
