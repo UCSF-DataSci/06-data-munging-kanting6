@@ -32,8 +32,7 @@
    - The `gender` column uses numeric values (e.g., 1.0, 3.0). The value `3.0` seems irregular for a binary gender representation.
 
 **Age**:
-   - There are records where `age` is 0, which could represent newborns or invalid data.
-
+   - There are records where `age` is 0, which represents invalid data.
 
 
 ## 2. Data Cleaning Process
@@ -48,15 +47,13 @@ The dataset contains population data with issues such as missing values, duplica
 - income_groups: Replaced missing values with 'Unknown'. This categorical placeholder avoids introducing bias.
 - age: Replaced missing values with the median age to avoid outlier effects.
 - gender: Replaced missing values with 'Not Specified' as a neutral placeholder.
-- year: Replaced missing values with the mode (most frequent year) as it's likely to capture the most typical value.
+- year: Replaced missing values with the mode / most frequent year as it's likely to capture the most typical value.
 - population: Replaced missing values with the median, a robust statistic against outliers.
 
 ### Correcting Data Types:
-- Ensured the 'year' column is an integer type to maintain consistency.
-Trimming Whitespace:
+- Ensured the 'year' column as an integer type to maintain consistency and trimmed Whitespace.
 
-### Removed leading and trailing whitespace from all string columns.
-- Removing Unrealistic Values:
+### Removed leading and trailing whitespace from all string columns by removing Unrealistic Values.
 
 ### Dropped rows with negative population values.
 
@@ -67,7 +64,6 @@ Trimming Whitespace:
 ### Output Data: `cleaned_population_data.csv`
 
 The cleaned dataset has improved data quality, with missing values addressed, duplicates removed, correct data types, and outliers handled. 
-
 
 
 ## 3. Final State Analysis
@@ -127,7 +123,7 @@ The cleaned dataset reduces noise from duplicates and outliers, resulting in hig
 
 ### Reflections on the Learning Process
 
-This data cleaning process reinforced the importance of:
+This data-cleaning process reinforced the importance of:
 
 - **Data Quality**: Clean data is crucial for reliable analysis. This experience underscored that even minor data issues can lead to significant biases in results.
 - **Statistical Understanding**: Gaining insights into statistical concepts, like standard deviation and its application in outlier detection, was enlightening and applicable to future data analyses.
