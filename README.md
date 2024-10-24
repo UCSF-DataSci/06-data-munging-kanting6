@@ -1,4 +1,6 @@
-# Part A: Exploratory Data Analysis (EDA) Issues Results
+# Data Cleaning Project: Population Dataset
+
+## 1. Initial State Analysis
 
 1. **Missing Data**:
    - `income_groups`: 6,306 missing entries (around 5%).
@@ -18,9 +20,9 @@
 
 
 
-# Part B: Data Cleaning Process
+## 2. Data Cleaning Process
 
-## Input Data: `messy_population_data.csv`
+### Input Data: `messy_population_data.csv`
 The dataset contains population data with issues such as missing values, duplicates, inconsistent data types, and outliers. This script addresses these issues systematically.
 
 ### Cleaning Process:
@@ -50,7 +52,7 @@ The cleaned dataset has improved data quality, with missing values addressed, du
 
 
 
-# Part C: More Summary
+## 3. Final State Analysis
 
 The cleaned dataset, `cleaned_population_data.csv`, has been refined to enhance its quality for data analysis. Key features include:
 
