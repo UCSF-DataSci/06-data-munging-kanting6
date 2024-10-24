@@ -32,20 +32,22 @@ The dataset contains population data with issues such as missing values, duplica
 
 ### Cleaning Process:
 
-1. **Missing Values**:
-   - **Method**: Rows with more than 50% missing values are dropped. For other missing values in numeric columns, the column mean is used to fill in the gaps.
+## Filling Missing Values:
 
-2. **Duplicate Rows**:
-   - **Method**: Identified and removed duplicate rows.
+- income_groups: Replaced missing values with 'Unknown'. This categorical placeholder avoids introducing bias.
+- age: Replaced missing values with the median age to avoid outlier effects.
+- gender: Replaced missing values with 'Not Specified' as a neutral placeholder.
+- year: Replaced missing values with the mode (most frequent year) as it's likely to capture the most typical value.
+- population: Replaced missing values with the median, a robust statistic against outliers.
 
-3. **Data Type Correction**:
-   - **Method**: Converted the `population` column to a numeric data type.
+##Correcting Data Types:
+- Ensured the 'year' column is an integer type to maintain consistency.
+Trimming Whitespace:
 
-4. **Outlier Removal**:
-   - **Method**: Removed rows with values greater than 3 standard deviations from the mean in numeric columns.
+## Removed leading and trailing whitespace from all string columns.
+- Removing Unrealistic Values:
 
-5. **Standardization** (Optional):
-   - **Method**: Standardized the `population` column by converting values to z-scores (mean of 0, standard deviation of 1).
+## Dropped rows with negative population values.
 
 ### Error Handling and Logging:
 - The script includes error handling to log any issues encountered during the cleaning process. A log file (`clean_data.log`) is generated for tracking purposes.
