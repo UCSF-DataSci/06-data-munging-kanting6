@@ -46,7 +46,7 @@ The dataset contains population data with issues such as missing values, duplica
 - The script includes error handling to log any issues encountered during the cleaning process. A log file (`clean_data.log`) is generated for tracking purposes.
 - Errors such as missing input files or issues during the cleaning process will be captured and documented in the log.
 
-## Output Data: `cleaned_population_data.csv`
+### Output Data: `cleaned_population_data.csv`
 
 The cleaned dataset has improved data quality, with missing values addressed, duplicates removed, correct data types, and outliers handled. 
 
@@ -69,7 +69,7 @@ The cleaned dataset, `cleaned_population_data.csv`, has been refined to enhance 
 - **Outliers**:
   - Rows containing outliers were removed, enhancing the accuracy of the dataset.
 
-# Comparison with the Original Dirty Dataset
+### Comparison with the Original Dirty Dataset
 
 The original dirty dataset (`messy_population_data.csv`) exhibited several issues, including:
 
@@ -80,7 +80,7 @@ The original dirty dataset (`messy_population_data.csv`) exhibited several issue
 
 The cleaned dataset reduces noise from duplicates and outliers, resulting in higher reliability due to the addressed missing values.
 
-# Challenges Faced and Overcoming Them
+### Challenges Faced and Overcoming Them
 
 ### Challenge 1: Handling Missing Values
 - **Solution**: I opted to drop rows with more than 50% missing data to maintain quality while filling in the remaining missing values with column means. This approach minimized the loss of valuable information.
@@ -91,7 +91,7 @@ The cleaned dataset reduces noise from duplicates and outliers, resulting in hig
 ### Challenge 3: Data Type Corrections
 - **Solution**: Initially, it was unclear which columns needed type conversions. I utilized the `info()` method in Pandas to review data types and implemented targeted conversions based on data context.
 
-# Reflections on the Learning Process
+### Reflections on the Learning Process
 
 This data cleaning process reinforced the importance of:
 
@@ -99,7 +99,7 @@ This data cleaning process reinforced the importance of:
 - **Statistical Understanding**: Gaining insights into statistical concepts, like standard deviation and its application in outlier detection, was enlightening and applicable to future data analyses.
 - **Documentation**: Keeping detailed logs of actions taken during the cleaning process helped maintain clarity about the changes made, which is vital for future reference or replication of results.
 
-# Potential Next Steps or Further Improvements
+### Potential Next Steps or Further Improvements
 
 In the future, I plan to implement automated checks for data integrity to ensure ongoing data quality in analyses and maintain proper logs of all data quality enhancements.
 
