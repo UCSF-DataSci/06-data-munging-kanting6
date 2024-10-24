@@ -4,22 +4,23 @@ import pandas as pd
 data = pd.read_csv('/Users/kankantingting/Documents/messy_population_data.csv') 
 
 # Display the first few rows to get an overview of the dataset
-print(data.head())
+print(data.head(data))
 
 # Get summary of the data
-print(data.info())
+print(data.info(data))
 
 # Get summary statistics for numeric columns
-print(data.describe())
+print(data.describe(data))
 
 # Check for missing values
-print(data.isnull().sum())
+print(data.isnull().sum(data))
 
 # Check for duplicate rows
-print(data.duplicated().sum())
+print(data.duplicated().sum(data))
 
 # Check for unique values in categorical columns
-print(data['Country'].value_counts()) 
+print(data['Country'].value_counts(data)) 
+
 Missing Data:
 
 income_groups: 6,306 missing entries (around 5%).
