@@ -32,31 +32,50 @@ def clean_data(df):
     df.drop_duplicates(inplace=True)
     logging.info(f"Removed duplicate rows. New shape: {df.shape}")
 
-    # 2. Handle missing values (example: replace NaNs in 'age' with median)
+    # 2. Handle missing values
+    # For 'income_groups', replace missing values with 'Unknown'
+    if 'income_groups' in df.columns:
+        df['income_groups'].fillna('Unknown', inplace=True)
+        logging.info(f"Filled missing values in 'income_groups' with 'Unknown'.")
+
+    # For 'age', replace missing values with the median age
     if 'age' in df.columns:
         median_age = df['age'].median()
         df['age'].fillna(median_age, inplace=True)
         logging.info(f"Filled missing values in 'age' with median: {median_age}")
 
-    # 3. Remove rows with missing values in critical columns 
-    df.dropna(subset=['income_groups', 'age'], inplace=True)
-    logging.info(f"Dropped rows with missing values in critical columns 'income_groups' or 'age'. New shape: {df.shape}")
+    # For 'gender', replace missing values with 'Not Specified'
+    if 'gender' in df.columns:
+        df['gender'].fillna('Not Specified', inplace=True)
+        logging.info("Filled missing values in 'gender' with 'Not Specified'.")
 
-    # 4. Correct data types (e.g., ensure 'age' is an integer)
+    # For 'year', replace missing values with the mode (most frequent year)
+    if 'year' in df.columns:
+        most_frequent_year = df['year'].mode()[0]
+        df['year'].fillna(most_frequent_year, inplace=True)
+        logging.info(f"Filled missing values in 'year' with mode: {most_frequent_year}")
+
+    # For 'population', replace missing values with the median population
+    if 'population' in df.columns:
+        median_population = df['population'].median()
+        df['population'].fillna(median_population, inplace=True)
+        logging.info(f"Filled missing values in 'population' with median: {median_population}")
+
+    # 3. Correct data types (e.g., ensure 'year' is an integer)
     try:
-        df['age'] = pd.to_numeric(df['age'], errors='coerce').astype('Int64')
-        logging.info("Converted 'age' column to integer.")
+        df['year'] = pd.to_numeric(df['year'], errors='coerce').astype('Int64')
+        logging.info("Converted 'year' column to integer.")
     except Exception as e:
-        logging.error(f"Error converting 'age' to integer: {e}")
-    
-    # 5. Strip whitespace from string columns
+        logging.error(f"Error converting 'year' to integer: {e}")
+
+    # 4. Strip whitespace from string columns
     df_obj = df.select_dtypes(['object'])
     df[df_obj.columns] = df_obj.apply(lambda x: x.str.strip())
     logging.info("Stripped whitespace from string columns.")
 
-    # 6. Remove rows with unrealistic age values (e.g., age < 0)
-    df = df[df['age'] >= 0]
-    logging.info(f"Removed rows with unrealistic age values. New shape: {df.shape}")
+    # 5. Remove rows with unrealistic population values (e.g., population < 0)
+    df = df[df['population'] >= 0]
+    logging.info(f"Removed rows with unrealistic population values. New shape: {df.shape}")
 
     return df
 
