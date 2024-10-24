@@ -83,6 +83,14 @@ The dataset contains population data with issues such as missing values, duplica
 
 ### Correcting Data Types:
 - Ensured the 'year' column as an integer type to maintain consistency and trimmed Whitespace.
+  
+    #### Drop duplicate rows
+    try:
+        df['year'] = pd.to_numeric(df['year'], errors='coerce').astype('Int64')
+        logging.info("Converted 'year' column to integer.")
+    except Exception as e:
+        logging.error(f"Error converting 'year' to integer: {e}")
+  
 
 ### Removed leading and trailing whitespace from all string columns by removing Unrealistic Values.
 
