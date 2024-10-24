@@ -96,13 +96,13 @@ The cleaned dataset reduces noise from duplicates and outliers, resulting in hig
 
 ### Challenges Faced and Overcoming Them
 
-### Challenge 1: Handling Missing Values
+- Challenge 1: Handling Missing Values
 - **Solution**: I opted to drop rows with more than 50% missing data to maintain quality while filling in the remaining missing values with column means. This approach minimized the loss of valuable information.
 
-### Challenge 2: Identifying Outliers
+- Challenge 2: Identifying Outliers
 - **Solution**: Detecting outliers required a solid understanding of the data distribution. I implemented a statistical method (three standard deviations) for identifying outliers, ensuring that the method was both systematic and justifiable.
 
-### Challenge 3: Data Type Corrections
+- Challenge 3: Data Type Corrections
 - **Solution**: Initially, it was unclear which columns needed type conversions. I utilized the `info()` method in Pandas to review data types and implemented targeted conversions based on data context.
 
 ### Reflections on the Learning Process
