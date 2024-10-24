@@ -52,10 +52,18 @@ The dataset contains population data with issues such as missing values, duplica
 - year: Replaced missing values with the mode / most frequent year as it's likely to capture the most typical value.
 - population: Replaced missing values with the median, a robust statistic against outliers.
 
+
+
 ### Correcting Data Types:
 - Ensured the 'year' column as an integer type to maintain consistency and trimmed Whitespace.
 
 ### Removed leading and trailing whitespace from all string columns by removing Unrealistic Values.
+
+### Dropped any duplicate rows.
+
+    #### Drop duplicate rows
+    df.drop_duplicates(inplace=True)
+    logging.info(f"Removed duplicate rows. New shape: {df.shape}")
 
 ### Dropped rows with negative population values.
 
