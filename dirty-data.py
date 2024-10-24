@@ -37,7 +37,7 @@ def introduce_outliers(df, column, percentage=0.02):
 def alter_datatypes(df):
     """Alter datatypes of some columns."""
     df['year'] = df['year'].astype(str)
-    df['population'] = df['population'].astype(str)
+    df['age'] = df['age'].astype(str)
     return df
 
 def add_inconsistent_categories(df, column, percentage=0.05):
